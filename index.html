@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Boonthanom Hanklang - DevOps Engineer and System Engineer based in Bangkok, Thailand." />
+    <title>Boonthanom Hanklang | DevOps Engineer</title>
+    <style>
+      :root {
+        --ink: #eaf2ff;
+        --muted: #9ba9c4;
+        --line: rgba(176, 201, 255, 0.16);
+        --panel: rgba(13, 25, 51, 0.78);
+        --accent: #56d5c4;
+        --accent-dark: #0c766e;
+        --blue: #88a9ff;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 82% 12%, rgba(83, 213, 196, 0.12), transparent 20rem),
+          radial-gradient(circle at 4% 28%, rgba(98, 129, 255, 0.16), transparent 25rem),
+          #071126;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        line-height: 1.6;
+      }
+      a { color: inherit; text-decoration: none; }
+      .page {
+        overflow: hidden;
+        position: relative;
+        isolation: isolate;
+      }
+      .page::before, .page::after {
+        content: "";
+        position: fixed;
+        width: 38rem;
+        height: 38rem;
+        border-radius: 50%;
+        filter: blur(20px);
+        pointer-events: none;
+        z-index: -1;
+      }
+      .page::before { background: rgba(63, 114, 255, 0.19); top: -18rem; left: -16rem; }
+      .page::after { background: rgba(0, 205, 172, 0.12); bottom: -22rem; right: -15rem; }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: -68px -80px -22px 38%;
+        z-index: -1;
+        opacity: 0.48;
+        background-image:
+          linear-gradient(rgba(109, 164, 255, 0.12) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(109, 164, 255, 0.12) 1px, transparent 1px),
+          radial-gradient(circle at 54% 43%, rgba(86, 213, 196, 0.85) 0 2px, transparent 3px),
+          radial-gradient(circle at 78% 68%, rgba(136, 169, 255, 0.72) 0 2px, transparent 3px),
+          radial-gradient(circle at 33% 78%, rgba(86, 213, 196, 0.7) 0 2px, transparent 3px);
+        background-size: 38px 38px, 38px 38px, auto, auto, auto;
+        mask-image: radial-gradient(ellipse at center, black 12%, transparent 70%);
+      }
+      .container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 26px 0;
+      }
+      .brand { font-weight: 800; letter-spacing: -0.04em; font-size: 1.05rem; }
+      .brand span { color: var(--accent); }
+      .nav-links { display: flex; gap: 24px; color: var(--muted); font-size: 0.9rem; }
+      .nav-links a:hover { color: var(--accent); }
+
+      .hero {
+        position: relative;
+        padding: 84px 0 105px;
+        display: grid;
+        grid-template-columns: 1.45fr 0.85fr;
+        align-items: end;
+        gap: 48px;
+      }
+      .eyebrow {
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.76rem;
+        font-weight: 800;
+      }
+      h1 { font-size: clamp(3rem, 7vw, 6.5rem); line-height: 0.95; letter-spacing: -0.075em; margin: 14px 0 24px; }
+      h1 em { color: var(--blue); font-style: normal; }
+      .hero p { max-width: 630px; color: #c3cee4; font-size: clamp(1rem, 2vw, 1.17rem); margin: 0; }
+      .hero-card, .section-card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        box-shadow: 0 24px 55px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(14px);
+      }
+      .hero-card { padding: 25px; border-radius: 18px; }
+      .portrait {
+        width: 132px;
+        aspect-ratio: 1;
+        overflow: hidden;
+        border-radius: 50%;
+        margin: -68px 0 20px auto;
+        border: 4px solid rgba(86, 213, 196, 0.92);
+        box-shadow: 0 0 0 8px rgba(86, 213, 196, 0.12), 0 18px 36px rgba(0, 0, 0, 0.36);
+        background: #147ea4;
+      }
+      .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+      .hero-card p { font-size: 0.84rem; color: var(--muted); margin: 2px 0 16px; }
+      .contact-list { display: grid; gap: 12px; }
+      .contact-list a, .contact-list div { font-size: 0.93rem; overflow-wrap: anywhere; }
+      .contact-list a:hover { color: var(--accent); }
+
+      main { padding-bottom: 84px; }
+      section { margin-top: 28px; }
+      .section-head { display: flex; align-items: center; gap: 16px; margin: 0 0 15px; }
+      .section-num { color: var(--accent); font-weight: 800; font-size: 0.8rem; }
+      h2 { font-size: 1.18rem; margin: 0; letter-spacing: -0.025em; }
+      .section-head::after { content: ""; height: 1px; background: var(--line); flex: 1; }
+      .section-card { border-radius: 16px; padding: clamp(24px, 4vw, 42px); }
+
+      .about { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 50px; align-items: start; }
+      .about strong { font-size: 1.55rem; line-height: 1.18; letter-spacing: -0.04em; display: block; }
+      .about p { color: var(--muted); margin: 0; }
+
+      .experience { padding: 0; overflow: hidden; }
+      .role { padding: 31px clamp(24px, 4vw, 42px); display: grid; grid-template-columns: 0.72fr 1.28fr; gap: 42px; border-bottom: 1px solid var(--line); }
+      .role:last-child { border-bottom: 0; }
+      .role time { color: var(--accent); display: block; font-size: 0.8rem; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; }
+      .role h3 { margin: 6px 0 2px; font-size: 1.12rem; letter-spacing: -0.025em; }
+      .company { color: var(--muted); font-size: 0.91rem; }
+      .role ul { padding-left: 1.1rem; margin: 0; color: #c8d1e5; }
+      .role li + li { margin-top: 6px; }
+
+      .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+      .technology-wall {
+        grid-column: 1 / -1;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+        padding-bottom: 28px;
+        border-bottom: 1px solid var(--line);
+      }
+      .technology-logo {
+        min-height: 74px;
+        padding: 13px;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(136, 169, 255, 0.15);
+        border-radius: 12px;
+        background: rgba(7, 17, 38, 0.42);
+      }
+      .technology-logo img { display: block; max-width: 100%; max-height: 38px; object-fit: contain; }
+      .technology-logo:hover { border-color: rgba(86, 213, 196, 0.58); transform: translateY(-2px); transition: 160ms ease; }
+      .skill-group h3 { color: var(--accent); font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; margin: 0 0 11px; }
+      .skill-group p { color: var(--muted); margin: 0; font-size: 0.94rem; }
+      .skill-visual {
+        height: 112px;
+        margin: 0 0 18px;
+        padding: 14px;
+        display: grid;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid rgba(136, 169, 255, 0.18);
+        border-radius: 12px;
+        background: linear-gradient(135deg, rgba(54, 93, 186, 0.28), rgba(10, 35, 57, 0.56));
+      }
+      .skill-visual svg { width: 100%; height: 100%; max-width: 210px; }
+      .education { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; }
+      .education-copy { display: flex; align-items: center; gap: 22px; }
+      .education-icon {
+        flex: 0 0 auto;
+        width: 64px;
+        height: 64px;
+        display: grid;
+        place-items: center;
+        border-radius: 16px;
+        color: var(--accent);
+        border: 1px solid rgba(86, 213, 196, 0.28);
+        background: rgba(86, 213, 196, 0.08);
+      }
+      .education-icon img { width: 48px; height: 48px; object-fit: contain; }
+      .education h3 { margin: 0 0 3px; font-size: 1.08rem; }
+      .education p { color: var(--muted); margin: 0; }
+      .education-year { color: var(--accent); font-weight: 800; }
+
+      footer { border-top: 1px solid var(--line); padding: 28px 0 45px; color: var(--muted); font-size: 0.88rem; }
+      .footer-row { display: flex; justify-content: space-between; gap: 20px; }
+      .footer-row a { color: var(--accent); }
+
+      @media (max-width: 760px) {
+        .container { width: min(100% - 32px, 1100px); }
+        nav { padding-top: 19px; }
+        .nav-links { display: none; }
+        .hero { grid-template-columns: 1fr; gap: 34px; padding: 64px 0 70px; }
+        .about, .role, .skills { grid-template-columns: 1fr; gap: 25px; }
+        .role { padding: 27px 24px; }
+        .skills { gap: 24px; }
+        .technology-wall { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding-bottom: 24px; }
+        .technology-logo { min-height: 64px; }
+        .education { grid-template-columns: 1fr; gap: 10px; }
+        .education-copy { align-items: flex-start; }
+        .education-icon { width: 54px; height: 54px; border-radius: 14px; }
+        .footer-row { flex-direction: column; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header class="container">
+        <nav aria-label="Primary navigation">
+          <a class="brand" href="#top">BOONTHANOM<span>.</span></a>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#skills">Skills</a>
+            <a href="mailto:boonthanom.h@gmail.com">Contact</a>
+          </div>
+        </nav>
+        <div class="hero" id="top">
+          <div>
+            <div class="eyebrow">DevOps Engineer · Bangkok, Thailand</div>
+            <h1>Boonthanom<br /><em>Hanklang</em></h1>
+            <p>DevOps and systems engineer with hands-on experience building reliable cloud infrastructure, automating delivery, and keeping production systems healthy.</p>
+          </div>
+          <aside class="hero-card" aria-label="Contact details">
+            <div class="portrait"><img src="assets/boonthanom-hanklang.jpg" alt="Boonthanom Hanklang" /></div>
+            <div class="eyebrow">Get in touch</div>
+            <p>Available for DevOps Engineer, System Engineer, and System Administrator opportunities.</p>
+            <div class="contact-list">
+              <a href="mailto:boonthanom.h@gmail.com">boonthanom.h@gmail.com</a>
+              <a href="tel:+66949643966">(+66) 094 964 3966</a>
+              <a href="https://github.com/boonthanom" target="_blank" rel="noreferrer">github.com/boonthanom ↗</a>
+              <a href="https://www.linkedin.com/in/boonthanom-hanklang" target="_blank" rel="noreferrer">linkedin.com/in/boonthanom-hanklang ↗</a>
+            </div>
+          </aside>
+        </div>
+      </header>
+
+      <main class="container">
+        <section id="about">
+          <div class="section-head"><span class="section-num">01</span><h2>Profile</h2></div>
+          <div class="section-card about">
+            <strong>Infrastructure that is automated, observable, and built to last.</strong>
+            <p>I work across AWS, Azure, and Google Cloud, combining Linux administration with CI/CD, Infrastructure as Code, containers, and monitoring. My focus is making deployments safer, systems more resilient, and incident response faster.</p>
+          </div>
+        </section>
+
+        <section id="experience">
+          <div class="section-head"><span class="section-num">02</span><h2>Experience</h2></div>
+          <div class="section-card experience">
+            <article class="role">
+              <div><time>Oct 2023 – Dec 2024</time><h3>DevOps Engineer</h3><div class="company">Hydroneo Co., Ltd. · Bangkok</div></div>
+              <ul><li>Designed and maintained CI/CD pipelines for automated software delivery.</li><li>Managed Infrastructure as Code with Terraform and CloudFormation.</li><li>Operated Docker, Kubernetes, and Helm environments with Prometheus, Grafana, and ELK observability.</li><li>Improved availability, security, incident response, and cloud infrastructure across AWS, GCP, and Azure.</li></ul>
+            </article>
+            <article class="role">
+              <div><time>Dec 2022 – Sep 2023</time><h3>System Engineer</h3><div class="company">Asiacab Co., Ltd. · Thailand</div></div>
+              <ul><li>Monitored Azure infrastructure using Prometheus, Grafana, and PagerDuty.</li><li>Configured Kubernetes, AWS load balancing, EC2 worker nodes, and RDS MySQL.</li><li>Installed Jenkins and GitLab CI/CD pipelines and managed Route 53 DNS configuration.</li></ul>
+            </article>
+            <article class="role">
+              <div><time>May 2020 – Nov 2021</time><h3>System Engineer</h3><div class="company">SERV Consulting Co., Ltd. · Thailand</div></div>
+              <ul><li>Monitored mobile-application deployments on AWS with CloudWatch and Datadog.</li><li>Reported system health, managed Jira Service Management incidents, and supported production operations.</li></ul>
+            </article>
+            <article class="role">
+              <div><time>Apr 2007 – Mar 2008</time><h3>System Operator</h3><div class="company">ABC Technology Co., Ltd. · Thailand</div></div>
+              <ul><li>Operated data-center infrastructure, monitored servers and databases, and coordinated preventive maintenance.</li></ul>
+            </article>
+            <article class="role">
+              <div><time>Dec 2002 – Feb 2007</time><h3>Program Technical Support</h3><div class="company">BECi Corporation Co., Ltd.</div></div>
+              <ul><li>Supported SMS chat servers running Solaris, JBoss, and MySQL; maintained shell and JSP scripts and web content.</li></ul>
+            </article>
+          </div>
+        </section>
+
+        <section id="skills">
+          <div class="section-head"><span class="section-num">03</span><h2>Core skills</h2></div>
+          <div class="section-card skills">
+            <div class="technology-wall" aria-label="Technology logos">
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" alt="Amazon Web Services" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azure/azure-original-wordmark.svg" alt="Microsoft Azure" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original-wordmark.svg" alt="Google Cloud" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg" alt="MySQL" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg" alt="MongoDB" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original-wordmark.svg" alt="Docker" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-original-wordmark.svg" alt="Kubernetes" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original-wordmark.svg" alt="Terraform" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg" alt="Linux" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prometheus/prometheus-original-wordmark.svg" alt="Prometheus" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/grafana/grafana-original-wordmark.svg" alt="Grafana" /></div>
+              <div class="technology-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original-wordmark.svg" alt="GitLab" /></div>
+            </div>
+            <div class="skill-group"><h3>Cloud & Platform</h3><p>AWS, Azure, Google Cloud, EC2, IAM, Route 53, RDS, serverless, microservices</p></div>
+            <div class="skill-group"><h3>Automation & Delivery</h3><p>Terraform, CloudFormation, Jenkins, GitLab CI/CD, ArgoCD, Docker, Kubernetes, Helm</p></div>
+            <div class="skill-group"><h3>Systems & Observability</h3><p>Ubuntu, CentOS, Red Hat, Windows Server, Prometheus, Grafana, ELK, Datadog, CloudWatch</p></div>
+            <div class="skill-group"><h3>Databases</h3><p>MySQL, Microsoft SQL Server, MongoDB, DynamoDB</p></div>
+            <div class="skill-group">
+              <div class="skill-visual" role="img" aria-label="Code and cloud infrastructure illustration">
+                <svg viewBox="0 0 220 90" fill="none" aria-hidden="true">
+                  <path d="M36 45 58 25l-22-20M74 5l-17 80M92 5l22 20-22 20" stroke="#88A9FF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M146 65h39a16 16 0 0 0 1-32 25 25 0 0 0-47-4 18 18 0 0 0 7 36Z" fill="#56D5C4" fill-opacity=".16" stroke="#56D5C4" stroke-width="4" stroke-linejoin="round"/>
+                  <circle cx="151" cy="48" r="4" fill="#56D5C4"/><circle cx="168" cy="48" r="4" fill="#56D5C4"/><circle cx="185" cy="48" r="4" fill="#56D5C4"/>
+                  <path d="M126 77h70" stroke="#88A9FF" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3>Development</h3><p>Shell scripting, JavaScript, PHP, Java, JSP, HTML, CSS, Flutter, Dart</p>
+            </div>
+            <div class="skill-group"><h3>Languages</h3><p>Thai (native) · English (conversational)</p></div>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-head"><span class="section-num">04</span><h2>Education</h2></div>
+          <div class="section-card education">
+            <div class="education-copy">
+              <div class="education-icon"><img src="https://new.ubru.ac.th/images/UBRU_MAIN_LOGO.png" alt="Ubon Ratchathani Rajabhat University logo" /></div>
+              <div><h3>Bachelor of Computer Science and Technology</h3><p>Rajabhat Ubon Ratchathani University · Ubon Ratchathani, Thailand</p></div>
+            </div>
+            <div class="education-year">2001</div>
+          </div>
+        </section>
+      </main>
+
+      <footer><div class="container footer-row"><span>© <span id="year"></span> Boonthanom Hanklang</span><a href="mailto:boonthanom.h@gmail.com">Let’s work together →</a></div></footer>
+    </div>
+    <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  </body>
+</html>
